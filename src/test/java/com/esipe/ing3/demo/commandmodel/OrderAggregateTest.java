@@ -40,9 +40,9 @@ public class OrderAggregateTest {
     }
 
     @Test
-    public void shouldShipOrderIfConfirmed() {
+    public void shouldCloseOrderIfConfirmed() {
         String orderId = UUID.randomUUID().toString();
-        String product = "Deluxe Chair";
+        String product = "Manager";
         fixture.given(new OrderCreatedEvent(orderId, product), new OrderConfirmedEvent(orderId))
                 .when(new CloseOrderCommand(orderId))
                 .expectEvents(new OrderClosedEvent(orderId));
